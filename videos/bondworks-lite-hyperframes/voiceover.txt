@@ -1,0 +1,15 @@
+Dealer selection is the first execution decision.
+
+BondWorks Lite scores counterparties before an RFQ is sent, using simulated price quality, response rate, latency, sector hit rate, size capacity, and inventory fit.
+
+The trader sends a five-million-dollar RFQ for a ten-year Treasury and watches dealer liquidity form in real time.
+
+Quotes arrive with price, yield, spread, size, latency, and status. The best offer is highlighted, slow dealers are visible, and expired or missing responses stay traceable.
+
+If the trader chooses a non-best quote, BondWorks requires a best-execution rationale before execution.
+
+After the fill, the analytics page compares the execution against the best quote, cover price, mid, last print, and simulated tape VWAP.
+
+The audit trail records every lifecycle event, from RFQ creation through rationale, trade creation, and analytics generation.
+
+Underneath the workstation is a serious backend: Spring Boot, PostgreSQL, Redis, Redpanda, WebSockets, and a Python strategy API.

@@ -1,0 +1,16 @@
+{
+  "fixture_type": "dealer_axes_explanations",
+  "model": "nvidia/nemotron-3-super-120b-a12b:free",
+  "prompt_hash": "e5b7843b77271204cdec0cd5cfe34cf2e77dae8c0f9176aa066c090818066ced",
+  "validation_status": "FALLBACK_NO_KEY",
+  "payload": [
+    {
+      "dealer": "CITI",
+      "bond_code": "UST-10Y-2036",
+      "stance": "WANTS_TO_SELL",
+      "inventory_fit_score": 0.91,
+      "inventory_adjustment_bps": -1.2,
+      "description": "CITI is axed to reduce 10Y duration inventory and is likely to show a tighter offer."
+    }
+  ]
+}

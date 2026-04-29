@@ -1,0 +1,12 @@
+[project]
+name = "bondworks-lite-sdk"
+version = "0.1.0"
+description = "Minimal Python SDK for BondWorks Lite simulated RFQ workflows"
+requires-python = ">=3.10"
+dependencies = [
+  "httpx>=0.27.0",
+  "pydantic>=2.7.0"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

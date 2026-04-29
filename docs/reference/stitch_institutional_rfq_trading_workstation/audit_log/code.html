@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700;900&amp;family=Inter:wght@400;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      background-color: #10131a;
+      color: #e1e2ec;
+      margin: 0;
+      overflow-x: hidden;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    /* Custom scrollbar for high-density tables */
+    ::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #10131a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #32353c;
+      border-radius: 2px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #424754;
+    }
+  </style>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#32353c",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#723600",
+            "on-background": "#e1e2ec",
+            "tertiary-fixed": "#ffdcc6",
+            "surface-tint": "#adc6ff",
+            "on-secondary": "#293040",
+            "on-tertiary-container": "#461f00",
+            "primary-fixed": "#d8e2ff",
+            "secondary-fixed-dim": "#c0c6db",
+            "on-primary": "#002e6a",
+            "surface": "#10131a",
+            "secondary-fixed": "#dce2f7",
+            "on-primary-fixed": "#001a42",
+            "inverse-on-surface": "#2e3038",
+            "primary-fixed-dim": "#adc6ff",
+            "on-primary-container": "#00285d",
+            "on-tertiary-fixed": "#311400",
+            "tertiary-fixed-dim": "#ffb786",
+            "on-primary-fixed-variant": "#004395",
+            "primary-container": "#4d8eff",
+            "secondary": "#c0c6db",
+            "surface-container": "#1d2027",
+            "inverse-surface": "#e1e2ec",
+            "on-surface": "#e1e2ec",
+            "on-tertiary": "#502400",
+            "background": "#10131a",
+            "on-secondary-fixed": "#141b2b",
+            "tertiary-container": "#df7412",
+            "outline": "#8c909f",
+            "surface-dim": "#10131a",
+            "surface-variant": "#32353c",
+            "on-secondary-container": "#aeb5c9",
+            "surface-container-lowest": "#0b0e15",
+            "on-surface-variant": "#c2c6d6",
+            "surface-container-high": "#272a31",
+            "on-secondary-fixed-variant": "#404758",
+            "primary": "#adc6ff",
+            "outline-variant": "#424754",
+            "error": "#ffb4ab",
+            "error-container": "#93000a",
+            "surface-container-low": "#191b23",
+            "secondary-container": "#404758",
+            "tertiary": "#ffb786",
+            "inverse-primary": "#005ac2",
+            "surface-bright": "#363941",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "cell-padding-x": "8px",
+            "container-margin": "12px",
+            "panel-gap": "2px",
+            "unit": "4px",
+            "cell-padding-y": "4px"
+          },
+          "fontFamily": {
+            "ui-text": ["Public Sans", "sans-serif"],
+            "data-md": ["JetBrains Mono", "monospace"],
+            "data-lg": ["JetBrains Mono", "monospace"],
+            "data-sm": ["JetBrains Mono", "monospace"],
+            "label-caps": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "ui-text": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "data-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+            "data-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "data-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="font-ui-text text-ui-text selection:bg-primary selection:text-on-primary">
+<!-- SideNavBar Anchor -->
+<aside class="fixed left-0 top-0 h-full flex flex-col items-center py-4 bg-slate-950 docked h-full w-16 border-r border-slate-800 transition-colors duration-150 z-50">
+<div class="text-blue-500 font-black text-lg p-4 mb-4">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<nav class="flex flex-col gap-2 w-full">
+<!-- Dashboard -->
+<a class="flex flex-col items-center justify-center py-3 text-slate-500 hover:bg-slate-900 hover:text-slate-300 transition-colors duration-150 group" href="#" title="Dashboard">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-public-sans text-xs uppercase tracking-wider mt-1 opacity-0 group-hover:opacity-100 scale-75">DASH</span>
+</a>
+<!-- New RFQ -->
+<a class="flex flex-col items-center justify-center py-3 text-slate-500 hover:bg-slate-900 hover:text-slate-300 transition-colors duration-150 group" href="#" title="New RFQ">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+</a>
+<!-- RFQs -->
+<a class="flex flex-col items-center justify-center py-3 text-slate-500 hover:bg-slate-900 hover:text-slate-300 transition-colors duration-150 group" href="#" title="RFQs">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+</a>
+<!-- Trades -->
+<a class="flex flex-col items-center justify-center py-3 text-slate-500 hover:bg-slate-900 hover:text-slate-300 transition-colors duration-150 group" href="#" title="Trades">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+</a>
+<!-- Dealers -->
+<a class="flex flex-col items-center justify-center py-3 text-slate-500 hover:bg-slate-900 hover:text-slate-300 transition-colors duration-150 group" href="#" title="Dealers">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+</a>
+<!-- Audit (ACTIVE) -->
+<a class="flex flex-col items-center justify-center py-3 text-blue-500 bg-slate-900 border-l-2 border-blue-500 transition-colors duration-150 group" href="#" title="Audit">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</a>
+<!-- Docs -->
+<a class="flex flex-col items-center justify-center py-3 text-slate-500 hover:bg-slate-900 hover:text-slate-300 transition-colors duration-150 group" href="#" title="Docs">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-4">
+<button class="text-slate-500 hover:text-white transition-colors">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</aside>
+<!-- TopNavBar Anchor -->
+<header class="fixed top-0 left-16 right-0 h-10 flex justify-between items-center px-4 bg-slate-900 border-b border-slate-800 z-40">
+<div class="flex items-center gap-4">
+<span class="font-mono text-xs font-bold text-blue-500 tracking-tighter">BondWorks Lite // AUDIT_LOG</span>
+<div class="h-4 w-[1px] bg-slate-700 mx-2"></div>
+<div class="flex items-center gap-3">
+<span class="text-slate-400 font-mono text-[10px] uppercase">Market: Open</span>
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]"></div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400 hover:text-white text-lg cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white text-lg cursor-pointer" data-icon="schedule">schedule</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white text-lg cursor-pointer" data-icon="settings">settings</span>
+</div>
+<div class="h-6 w-[1px] bg-slate-700"></div>
+<div class="flex items-center gap-2">
+<span class="font-mono text-xs text-slate-300">D.TRADER_PRO</span>
+<div class="w-6 h-6 bg-blue-600 rounded-sm flex items-center justify-center text-[10px] font-bold">DT</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-16 mt-10 p-2 h-[calc(100vh-2.5rem)] flex flex-col gap-2">
+<!-- Filter Bar Area -->
+<section class="bg-surface-container p-2 flex flex-wrap items-center gap-3 border border-slate-800">
+<div class="flex items-center bg-surface-container-lowest border border-outline-variant px-2 py-1 rounded-sm w-64 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined text-outline text-sm mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-data-sm w-full p-0 placeholder:text-outline/50" placeholder="Search RFQ ID, Trader, or Event..." type="text"/>
+</div>
+<div class="flex items-center gap-2">
+<label class="font-label-caps text-outline uppercase">Event Type</label>
+<select class="bg-surface-container-low border border-outline-variant text-data-sm px-2 py-1 focus:border-primary focus:ring-0 rounded-sm text-on-surface">
+<option>ALL_EVENTS</option>
+<option>TRADE_EXECUTION</option>
+<option>QUOTE_RECEIVED</option>
+<option>QUOTE_ACCEPTED</option>
+<option>USER_LOGIN</option>
+</select>
+</div>
+<div class="flex items-center gap-2">
+<label class="font-label-caps text-outline uppercase">Date Range</label>
+<div class="flex items-center bg-surface-container-low border border-outline-variant rounded-sm px-2 py-1">
+<span class="material-symbols-outlined text-outline text-sm mr-2" data-icon="calendar_today">calendar_today</span>
+<span class="text-data-sm text-on-surface">2023-10-27 - 2023-10-27</span>
+</div>
+</div>
+<div class="ml-auto flex items-center gap-2">
+<button class="flex items-center gap-1 px-3 py-1 bg-surface-container-highest hover:bg-secondary-container border border-outline-variant text-on-surface text-data-sm transition-colors rounded-sm">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+          CSV Export
+        </button>
+<button class="flex items-center gap-1 px-3 py-1 bg-primary text-on-primary hover:bg-primary-container font-bold text-data-sm transition-colors rounded-sm">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+          Live Feed
+        </button>
+</div>
+</section>
+<!-- Audit Grid Table -->
+<section class="flex-1 overflow-hidden flex flex-col bg-surface-container border border-slate-800">
+<div class="overflow-x-auto overflow-y-auto flex-1">
+<table class="w-full border-collapse">
+<thead class="sticky top-0 z-10 bg-slate-900 border-b-2 border-slate-800">
+<tr>
+<th class="text-left py-2 px-cell-padding-x font-label-caps text-outline uppercase border-r border-slate-800 w-48">Timestamp (UTC)</th>
+<th class="text-left py-2 px-cell-padding-x font-label-caps text-outline uppercase border-r border-slate-800 w-40">Event Type</th>
+<th class="text-left py-2 px-cell-padding-x font-label-caps text-outline uppercase border-r border-slate-800 w-32">Entity ID</th>
+<th class="text-left py-2 px-cell-padding-x font-label-caps text-outline uppercase border-r border-slate-800 w-24">Actor</th>
+<th class="text-left py-2 px-cell-padding-x font-label-caps text-outline uppercase">Details</th>
+</tr>
+</thead>
+<tbody class="font-data-sm text-on-surface-variant divide-y divide-slate-800">
+<!-- Row 1 -->
+<tr class="hover:bg-slate-800/50 transition-colors group">
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-on-surface font-medium whitespace-nowrap">2023-10-27 10:42:18</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">
+<span class="px-1.5 py-0.5 bg-primary-container text-on-primary-container font-bold text-[10px] rounded">TRADE_EXECUTION</span>
+</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-blue-400 hover:underline cursor-pointer">RFQ-84F2A</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">D.Trader</td>
+<td class="py-cell-padding-y px-cell-padding-x">
+                Executed <span class="text-emerald-500 font-bold">BUY</span> $5MM UST 4.25 2036 @ <span class="text-on-surface">101.183</span> with CITI
+              </td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-slate-800/50 transition-colors group">
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-on-surface/70 whitespace-nowrap">2023-10-27 10:42:05</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">
+<span class="px-1.5 py-0.5 bg-secondary-container text-on-secondary-container font-bold text-[10px] rounded">QUOTE_ACCEPTED</span>
+</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-blue-400/70">RFQ-84F2A</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">D.Trader</td>
+<td class="py-cell-padding-y px-cell-padding-x">
+                Accepted CITI quote <span class="text-on-surface font-medium">101.183</span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-slate-800/50 transition-colors group">
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-on-surface/70 whitespace-nowrap">2023-10-27 10:42:02</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">
+<span class="px-1.5 py-0.5 bg-surface-container-highest text-on-surface-variant font-bold text-[10px] rounded">QUOTE_RECEIVED</span>
+</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-blue-400/70">RFQ-84F2A</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-outline">SYSTEM</td>
+<td class="py-cell-padding-y px-cell-padding-x">
+                Received quote from JPM (<span class="text-on-surface">101.204</span>)
+              </td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-slate-800/50 transition-colors group">
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-on-surface/70 whitespace-nowrap">2023-10-27 10:41:55</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">
+<span class="px-1.5 py-0.5 bg-surface-container-highest text-on-surface-variant font-bold text-[10px] rounded">RFQ_CREATED</span>
+</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-blue-400/70">RFQ-84F2A</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">D.Trader</td>
+<td class="py-cell-padding-y px-cell-padding-x">
+                New Request for Quote: UST 4.25 2036, Size: $5MM, Counterparties: [CITI, JPM, GS, MS]
+              </td>
+</tr>
+<!-- Row 5 (Failure state example) -->
+<tr class="hover:bg-slate-800/50 transition-colors group">
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-on-surface/70 whitespace-nowrap">2023-10-27 10:38:12</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">
+<span class="px-1.5 py-0.5 bg-error-container text-on-error-container font-bold text-[10px] rounded">EXECUTION_FAILED</span>
+</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-blue-400/70">RFQ-99B1Z</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-outline">SYSTEM</td>
+<td class="py-cell-padding-y px-cell-padding-x text-error">
+                Rejected by GS: Exceeded credit limit for account institutional-994
+              </td>
+</tr>
+<!-- Fill Rows for density visualization -->
+<tr class="hover:bg-slate-800/50 transition-colors">
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-on-surface/40">2023-10-27 10:35:00</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800"><span class="px-1.5 py-0.5 bg-surface-container-highest text-on-surface-variant/50 font-bold text-[10px] rounded">LOGIN_SUCCESS</span></td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-outline">USR-9442</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">D.Trader</td>
+<td class="py-cell-padding-y px-cell-padding-x text-on-surface/40">User logged in from 192.168.1.45 (Terminal-4)</td>
+</tr>
+<!-- Repeat rows to show density -->
+<tr class="hover:bg-slate-800/50 transition-colors group">
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-on-surface/70 whitespace-nowrap">2023-10-27 10:32:44</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800">
+<span class="px-1.5 py-0.5 bg-tertiary-container text-on-tertiary-container font-bold text-[10px] rounded">SETTLEMENT_UPDATE</span>
+</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-blue-400/70">TRD-4412</td>
+<td class="py-cell-padding-y px-cell-padding-x border-r border-slate-800 text-outline">CLEARING</td>
+<td class="py-cell-padding-y px-cell-padding-x">
+                Status updated to <span class="text-tertiary font-bold">MATCHED</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer Status -->
+<footer class="bg-slate-900 border-t border-slate-800 px-4 py-1.5 flex items-center justify-between text-[11px] font-mono text-outline">
+<div class="flex items-center gap-4">
+<span>Showing 1-7 of 1,428 events</span>
+<div class="h-3 w-[1px] bg-slate-700"></div>
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+            Syncing in real-time
+          </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-1 hover:text-white transition-colors"><span class="material-symbols-outlined text-sm" data-icon="first_page">first_page</span></button>
+<button class="p-1 hover:text-white transition-colors"><span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span></button>
+<span class="px-2 py-0.5 bg-slate-800 text-white rounded">1</span>
+<button class="p-1 hover:text-white transition-colors"><span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span></button>
+<button class="p-1 hover:text-white transition-colors"><span class="material-symbols-outlined text-sm" data-icon="last_page">last_page</span></button>
+</div>
+</footer>
+</section>
+<!-- Side Inspection Panel (Asymmetric Layout) -->
+<section class="grid grid-cols-12 gap-2 h-40">
+<div class="col-span-8 bg-surface-container border border-slate-800 p-3 flex flex-col">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-label-caps text-primary uppercase text-xs">Event Visualizer</h3>
+<span class="text-data-sm text-outline">Activity Density (Last 24h)</span>
+</div>
+<div class="flex-1 flex items-end gap-1 px-2">
+<!-- Mock Chart Bars -->
+<div class="flex-1 bg-blue-900/30 h-[20%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[15%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[45%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[30%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[85%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[60%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[40%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-primary h-[95%] rounded-t-sm border-t border-white/20"></div>
+<div class="flex-1 bg-blue-900/30 h-[70%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[35%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[25%] rounded-t-sm border-t border-blue-500/50"></div>
+<div class="flex-1 bg-blue-900/30 h-[10%] rounded-t-sm border-t border-blue-500/50"></div>
+</div>
+</div>
+<div class="col-span-4 bg-surface-container border border-slate-800 p-3">
+<h3 class="font-label-caps text-primary uppercase text-xs mb-2">Compliance Alert</h3>
+<div class="flex gap-3">
+<div class="w-12 h-12 flex-shrink-0 bg-error-container/20 border border-error/30 flex items-center justify-center rounded">
+<span class="material-symbols-outlined text-error" data-icon="warning">warning</span>
+</div>
+<div>
+<p class="text-data-sm text-on-surface leading-tight mb-1">Unusual pattern detected for trader D.TRADER</p>
+<p class="text-[10px] text-outline font-mono">ID: SEC-ALRT-901 <br/> Time: 10:45:01 UTC</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Contextual Overlay (Hidden by default, used for interaction visual hint) -->
+<div class="fixed inset-0 bg-black/50 pointer-events-none opacity-0 transition-opacity"></div>
+</body></html>

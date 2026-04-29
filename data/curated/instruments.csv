@@ -1,0 +1,6 @@
+bond_code,figi,display_name,issuer,ticker,asset_class,sector,coupon,maturity_date,rating,currency,face_value,benchmark_tenor,source
+UST-2Y-2028,,UST 4.00 2028,US Treasury,UST,Bond,Treasury,4.00,2028-04-30,AAA,USD,100,2Y,CURATED_SEED
+UST-5Y-2031,,UST 4.10 2031,US Treasury,UST,Bond,Treasury,4.10,2031-04-30,AAA,USD,100,5Y,CURATED_SEED
+UST-10Y-2036,,UST 4.25 2036,US Treasury,UST,Bond,Treasury,4.25,2036-05-15,AAA,USD,100,10Y,CURATED_SEED
+AAPL-2032,,AAPL 4.10 2032,Apple Inc.,AAPL,Bond,Corporate IG,4.10,2032-08-08,AA+,USD,100,7Y,CURATED_SEED
+MSFT-2031,,MSFT 3.90 2031,Microsoft Corp.,MSFT,Bond,Corporate IG,3.90,2031-11-15,AAA,USD,100,7Y,CURATED_SEED

@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: bondworks-lite
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/bondworks}
+    username: ${POSTGRES_USER:bondworks}
+    password: ${POSTGRES_PASSWORD:bondworks}
+  flyway:
+    enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:19092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: bondworks-lite
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+bondworks:
+  jwt-secret: ${JWT_SECRET:dev-secret-change-me}
+  demo-api-key: ${BONDWORKS_DEMO_API_KEY:${DEMO_API_KEY:demo-bondworks-local-key}}
+  cors-origin: ${CORS_ORIGIN:http://localhost:5173}
+  kafka-enabled: ${BONDWORKS_KAFKA_ENABLED:false}

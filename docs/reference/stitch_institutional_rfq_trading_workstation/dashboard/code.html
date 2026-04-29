@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Public+Sans:wght@400;700;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#32353c",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#723600",
+                        "on-background": "#e1e2ec",
+                        "tertiary-fixed": "#ffdcc6",
+                        "surface-tint": "#adc6ff",
+                        "on-secondary": "#293040",
+                        "on-tertiary-container": "#461f00",
+                        "primary-fixed": "#d8e2ff",
+                        "secondary-fixed-dim": "#c0c6db",
+                        "on-primary": "#002e6a",
+                        "surface": "#10131a",
+                        "secondary-fixed": "#dce2f7",
+                        "on-primary-fixed": "#001a42",
+                        "inverse-on-surface": "#2e3038",
+                        "primary-fixed-dim": "#adc6ff",
+                        "on-primary-container": "#00285d",
+                        "on-tertiary-fixed": "#311400",
+                        "tertiary-fixed-dim": "#ffb786",
+                        "on-primary-fixed-variant": "#004395",
+                        "primary-container": "#4d8eff",
+                        "secondary": "#c0c6db",
+                        "surface-container": "#1d2027",
+                        "inverse-surface": "#e1e2ec",
+                        "on-surface": "#e1e2ec",
+                        "on-tertiary": "#502400",
+                        "background": "#10131a",
+                        "on-secondary-fixed": "#141b2b",
+                        "tertiary-container": "#df7412",
+                        "outline": "#8c909f",
+                        "surface-dim": "#10131a",
+                        "surface-variant": "#32353c",
+                        "on-secondary-container": "#aeb5c9",
+                        "surface-container-lowest": "#0b0e15",
+                        "on-surface-variant": "#c2c6d6",
+                        "surface-container-high": "#272a31",
+                        "on-secondary-fixed-variant": "#404758",
+                        "primary": "#adc6ff",
+                        "outline-variant": "#424754",
+                        "error": "#ffb4ab",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#191b23",
+                        "secondary-container": "#404758",
+                        "tertiary": "#ffb786",
+                        "inverse-primary": "#005ac2",
+                        "surface-bright": "#363941",
+                        "on-error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "ui-text": ["Public Sans", "sans-serif"],
+                        "data-md": ["JetBrains Mono", "monospace"],
+                        "data-lg": ["JetBrains Mono", "monospace"],
+                        "data-sm": ["JetBrains Mono", "monospace"],
+                        "label-caps": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "ui-text": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "data-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "data-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "data-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #10131a;
+            color: #e1e2ec;
+            margin: 0;
+            padding: 0;
+        }
+        .panel-border {
+            border: 1px solid #32353c;
+        }
+    </style>
+</head>
+<body class="font-ui-text text-ui-text">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col items-center py-4 bg-slate-950 docked h-full w-16 border-r border-slate-800 transition-colors duration-150 z-50">
+<div class="text-blue-500 font-black text-lg p-4 mb-4">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<nav class="flex flex-col gap-2 w-full items-center">
+<!-- Active Tab: Dashboard -->
+<a class="text-blue-500 bg-slate-900 border-l-2 border-blue-500 p-3 w-full flex justify-center group" href="#" title="Dashboard">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+</a>
+<a class="text-slate-500 hover:bg-slate-900 hover:text-slate-300 p-3 w-full flex justify-center transition-colors duration-150" href="#" title="New RFQ">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+</a>
+<a class="text-slate-500 hover:bg-slate-900 hover:text-slate-300 p-3 w-full flex justify-center transition-colors duration-150" href="#" title="RFQs">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+</a>
+<a class="text-slate-500 hover:bg-slate-900 hover:text-slate-300 p-3 w-full flex justify-center transition-colors duration-150" href="#" title="Trades">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+</a>
+<a class="text-slate-500 hover:bg-slate-900 hover:text-slate-300 p-3 w-full flex justify-center transition-colors duration-150" href="#" title="Dealers">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+</a>
+<a class="text-slate-500 hover:bg-slate-900 hover:text-slate-300 p-3 w-full flex justify-center transition-colors duration-150" href="#" title="Audit">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</a>
+<a class="text-slate-500 hover:bg-slate-900 hover:text-slate-300 p-3 w-full flex justify-center transition-colors duration-150" href="#" title="Docs">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</a>
+</nav>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="flex justify-between items-center px-4 ml-16 w-[calc(100%-4rem)] bg-slate-900 border-b border-slate-800 h-10 fixed top-0 z-40">
+<div class="flex items-center gap-4">
+<span class="font-mono text-xs font-bold text-blue-500 tracking-tight">BondWorks Lite</span>
+<div class="h-4 w-[1px] bg-slate-700"></div>
+<span class="text-slate-400 font-mono text-[10px] uppercase">Institutional Terminal // Session: Active</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer text-sm" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer text-sm" data-icon="schedule">schedule</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer text-sm" data-icon="settings">settings</span>
+</div>
+<div class="flex items-center gap-2">
+<img class="w-6 h-6 rounded-full border border-slate-600 grayscale" data-alt="professional male trader headshot against neutral grey background with focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYzxarH--W-tq0Rx60Ej5hXGGXgGUgCLEUVgS6XGDbhPfOVs6RgobpWSsN59ycmkj62kVd6tx3YNhtV_bGLdjfB-uF4RKVIxTfX84xEpx9YYowN-XE8S5x1Rl0z2p2zSo1XqyKuYoXDVSfyEbhjivtBfQ6VPxaTmvYcWKfQMdr4zg8towKRYxZl2Zz4v4y6zfJSnKaTClAHAgxsCQoucCBC1dwEI2o0DKV01vMmyhc0hSpJAhgdmmP7NXicbRc34mt4DEFi1nqu2hH"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-16 pt-10 p-1 min-h-screen">
+<div class="flex flex-col gap-[2px]">
+<!-- Metric Cards Row -->
+<div class="grid grid-cols-4 gap-[2px]">
+<div class="bg-surface-container-low panel-border p-3 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Active RFQs</span>
+<span class="font-data-lg text-data-lg text-primary">2</span>
+</div>
+<div class="bg-surface-container-low panel-border p-3 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Avg Slippage</span>
+<div class="flex items-baseline gap-1">
+<span class="font-data-lg text-data-lg text-on-surface">4.8</span>
+<span class="font-data-sm text-data-sm text-slate-400">bps</span>
+</div>
+</div>
+<div class="bg-surface-container-low panel-border p-3 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Dealer Hit Rate</span>
+<span class="font-data-lg text-data-lg text-tertiary">28%</span>
+</div>
+<div class="bg-surface-container-low panel-border p-3 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-slate-500 uppercase">Trades Today</span>
+<span class="font-data-lg text-data-lg text-on-surface">14</span>
+</div>
+</div>
+<!-- Active RFQs Panel -->
+<section class="bg-surface-container-low panel-border">
+<div class="bg-slate-800/50 px-3 py-1.5 flex justify-between items-center border-b border-slate-700">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="sensors">sensors</span>
+                        Active RFQs
+                    </h2>
+<span class="font-data-sm text-data-sm text-blue-400">Streaming 2 Objects</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-slate-500 font-label-caps text-[10px] uppercase border-b border-slate-800">
+<th class="p-2 font-bold">RFQ ID</th>
+<th class="p-2 font-bold">Security</th>
+<th class="p-2 font-bold">Side</th>
+<th class="p-2 font-bold">Size</th>
+<th class="p-2 font-bold">Status</th>
+<th class="p-2 font-bold text-right">Best Px</th>
+<th class="p-2 font-bold w-12"></th>
+</tr>
+</thead>
+<tbody class="font-data-sm text-data-sm divide-y divide-slate-800/50">
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="p-2 text-primary font-medium">RFQ-84F2A</td>
+<td class="p-2 text-on-surface">UST 4.25 2036</td>
+<td class="p-2"><span class="bg-blue-900/30 text-blue-400 px-1.5 py-0.5 rounded-sm font-bold">BUY</span></td>
+<td class="p-2 text-on-surface">$5MM</td>
+<td class="p-2"><span class="flex items-center gap-1.5 text-tertiary"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>OPEN</span></td>
+<td class="p-2 text-right font-bold text-primary">101.183</td>
+<td class="p-2 text-center text-slate-600 group-hover:text-slate-300">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors cursor-pointer group">
+<td class="p-2 text-primary font-medium">RFQ-91AD2</td>
+<td class="p-2 text-on-surface">AAPL 4.10 2032</td>
+<td class="p-2"><span class="bg-error-container text-error px-1.5 py-0.5 rounded-sm font-bold">SELL</span></td>
+<td class="p-2 text-on-surface">$2MM</td>
+<td class="p-2 text-slate-400">QUOTING</td>
+<td class="p-2 text-right font-bold text-on-surface">99.742</td>
+<td class="p-2 text-center text-slate-600 group-hover:text-slate-300">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Bottom Layout: Trades & Inventory -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-[2px]">
+<!-- Recent Trades Table -->
+<section class="lg:col-span-2 bg-surface-container-low panel-border">
+<div class="bg-slate-800/50 px-3 py-1.5 flex justify-between items-center border-b border-slate-700">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="history">history</span>
+                            Recent Trades
+                        </h2>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-slate-500 font-label-caps text-[10px] uppercase border-b border-slate-800">
+<th class="p-2 font-bold">Time</th>
+<th class="p-2 font-bold">Security</th>
+<th class="p-2 font-bold">Counterparty</th>
+<th class="p-2 font-bold">Side</th>
+<th class="p-2 font-bold">Size</th>
+<th class="p-2 font-bold text-right">Price</th>
+<th class="p-2 font-bold text-right">Slippage</th>
+</tr>
+</thead>
+<tbody class="font-data-sm text-data-sm divide-y divide-slate-800/50">
+<tr class="hover:bg-slate-800/30">
+<td class="p-2 text-slate-500">10:42:18</td>
+<td class="p-2 text-on-surface">UST 4.25 2036</td>
+<td class="p-2 text-secondary-fixed">CITI</td>
+<td class="p-2 text-blue-400 font-bold">BUY</td>
+<td class="p-2 text-on-surface">$5MM</td>
+<td class="p-2 text-right font-bold">101.183</td>
+<td class="p-2 text-right text-error font-medium">5.7 bps</td>
+</tr>
+<tr class="hover:bg-slate-800/30">
+<td class="p-2 text-slate-500">10:37:04</td>
+<td class="p-2 text-on-surface">MSFT 3.90 2031</td>
+<td class="p-2 text-secondary-fixed">GS</td>
+<td class="p-2 text-error font-bold">SELL</td>
+<td class="p-2 text-on-surface">$3MM</td>
+<td class="p-2 text-right font-bold">99.884</td>
+<td class="p-2 text-right text-primary font-medium">4.1 bps</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Market Overview Card -->
+<section class="bg-surface-container-low panel-border flex flex-col">
+<div class="bg-slate-800/50 px-3 py-1.5 flex justify-between items-center border-b border-slate-700">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 uppercase">
+<span class="material-symbols-outlined text-[14px]" data-icon="analytics">analytics</span>
+                            Yield Curve (UST)
+                        </h2>
+</div>
+<div class="flex-grow relative min-h-[200px] flex items-center justify-center overflow-hidden">
+<!-- Abstract Data Visualization / Chart Placeholder -->
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="w-full h-full" style="background-image: linear-gradient(rgba(173, 198, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(173, 198, 255, 0.1) 1px, transparent 1px); background-size: 20px 20px;"></div>
+</div>
+<svg class="w-full h-40 px-4 text-blue-500" preserveaspectratio="none" viewbox="0 0 400 100">
+<path d="M0,80 Q50,75 100,50 T200,30 T300,15 T400,10" fill="none" stroke="currentColor" stroke-width="2"></path>
+<circle cx="100" cy="50" fill="#adc6ff" r="3"></circle>
+<circle cx="200" cy="30" fill="#adc6ff" r="3"></circle>
+<circle cx="300" cy="15" fill="#adc6ff" r="3"></circle>
+</svg>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between text-[9px] text-slate-500 font-mono">
+<span>2Y</span>
+<span>5Y</span>
+<span>10Y</span>
+<span>30Y</span>
+</div>
+</div>
+<div class="p-3 border-t border-slate-800 bg-slate-900/50 space-y-2">
+<div class="flex justify-between text-[11px]">
+<span class="text-slate-400">10Y Benchmark</span>
+<span class="font-mono text-primary">4.218%</span>
+</div>
+<div class="flex justify-between text-[11px]">
+<span class="text-slate-400">Spread 2/10</span>
+<span class="font-mono text-error">-32.4 bps</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Contextual Status Bar -->
+<footer class="panel-border bg-slate-900 px-3 py-1 flex justify-between items-center text-[10px] font-mono text-slate-500">
+<div class="flex gap-4 items-center">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-green-500"></span>FIX: CONNECTED</span>
+<span class="flex items-center gap-1 text-blue-400"><span class="material-symbols-outlined text-[12px]" data-icon="cloud_done">cloud_done</span> AWS-US-EAST-1</span>
+</div>
+<div class="flex gap-4">
+<span>MKT: OPEN</span>
+<span class="text-on-surface">NYC: 10:43:21</span>
+</div>
+</footer>
+</div>
+</main>
+<!-- Contextual FAB (Hidden on Dashboard as per suppression rules unless specific action needed, but provided for layout reference if required on sub-pages) -->
+<!-- Suppressed on Dashboard to maintain focus on high-density data -->
+</body></html>

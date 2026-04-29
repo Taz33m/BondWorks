@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Public+Sans:wght@400;700;900&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-container-highest": "#32353c",
+                  "on-error": "#690005",
+                  "on-tertiary-fixed-variant": "#723600",
+                  "on-background": "#e1e2ec",
+                  "tertiary-fixed": "#ffdcc6",
+                  "surface-tint": "#adc6ff",
+                  "on-secondary": "#293040",
+                  "on-tertiary-container": "#461f00",
+                  "primary-fixed": "#d8e2ff",
+                  "secondary-fixed-dim": "#c0c6db",
+                  "on-primary": "#002e6a",
+                  "surface": "#10131a",
+                  "secondary-fixed": "#dce2f7",
+                  "on-primary-fixed": "#001a42",
+                  "inverse-on-surface": "#2e3038",
+                  "primary-fixed-dim": "#adc6ff",
+                  "on-primary-container": "#00285d",
+                  "on-tertiary-fixed": "#311400",
+                  "tertiary-fixed-dim": "#ffb786",
+                  "on-primary-fixed-variant": "#004395",
+                  "primary-container": "#4d8eff",
+                  "secondary": "#c0c6db",
+                  "surface-container": "#1d2027",
+                  "inverse-surface": "#e1e2ec",
+                  "on-surface": "#e1e2ec",
+                  "on-tertiary": "#502400",
+                  "background": "#10131a",
+                  "on-secondary-fixed": "#141b2b",
+                  "tertiary-container": "#df7412",
+                  "outline": "#8c909f",
+                  "surface-dim": "#10131a",
+                  "surface-variant": "#32353c",
+                  "on-secondary-container": "#aeb5c9",
+                  "surface-container-lowest": "#0b0e15",
+                  "on-surface-variant": "#c2c6d6",
+                  "surface-container-high": "#272a31",
+                  "on-secondary-fixed-variant": "#404758",
+                  "primary": "#adc6ff",
+                  "outline-variant": "#424754",
+                  "error": "#ffb4ab",
+                  "error-container": "#93000a",
+                  "surface-container-low": "#191b23",
+                  "secondary-container": "#404758",
+                  "tertiary": "#ffb786",
+                  "inverse-primary": "#005ac2",
+                  "surface-bright": "#363941",
+                  "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "cell-padding-x": "8px",
+                  "container-margin": "12px",
+                  "panel-gap": "2px",
+                  "unit": "4px",
+                  "cell-padding-y": "4px"
+          },
+          "fontFamily": {
+                  "ui-text": ["Public Sans", "sans-serif"],
+                  "data-md": ["JetBrains Mono", "monospace"],
+                  "data-lg": ["JetBrains Mono", "monospace"],
+                  "data-sm": ["JetBrains Mono", "monospace"],
+                  "label-caps": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+                  "ui-text": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                  "data-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                  "data-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                  "data-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                  "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+    }
+    .custom-scrollbar::-webkit-scrollbar { width: 4px; height: 4px; }
+    .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+    .custom-scrollbar::-webkit-scrollbar-thumb { background: #32353c; border-radius: 2px; }
+    body { cursor: default; }
+  </style>
+</head>
+<body class="bg-background text-on-background font-ui-text antialiased overflow-hidden">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full flex flex-col items-center py-4 bg-slate-950 docked h-full w-16 border-r border-slate-800 transition-colors duration-150 z-50">
+<div class="text-blue-500 font-black text-lg p-4 mb-4">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<nav class="flex flex-col gap-6 items-center w-full">
+<div class="group flex flex-col items-center w-full p-2 text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider mt-1">Dashboard</span>
+</div>
+<div class="group flex flex-col items-center w-full p-2 text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider mt-1">New RFQ</span>
+</div>
+<div class="group flex flex-col items-center w-full p-2 text-blue-500 bg-slate-900 border-l-2 border-blue-500 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider mt-1">RFQs</span>
+</div>
+<div class="group flex flex-col items-center w-full p-2 text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider mt-1">Trades</span>
+</div>
+<div class="group flex flex-col items-center w-full p-2 text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider mt-1">Dealers</span>
+</div>
+<div class="group flex flex-col items-center w-full p-2 text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider mt-1">Audit</span>
+</div>
+<div class="group flex flex-col items-center w-full p-2 text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider mt-1">Docs</span>
+</div>
+</nav>
+</aside>
+<!-- TopNavBar Shell -->
+<header class="fixed top-0 left-16 right-0 h-10 flex justify-between items-center px-4 bg-slate-900 border-b border-slate-800 z-40">
+<div class="flex items-center gap-4">
+<div class="font-mono text-xs font-bold text-blue-500">BONDWORKS LITE // ANALYTICS</div>
+<div class="h-4 w-[1px] bg-slate-700"></div>
+<div class="flex gap-4">
+<span class="text-blue-400 font-bold border-b-2 border-blue-400 cursor-pointer font-mono text-xs h-10 flex items-center">TRADE_DETAIL</span>
+<span class="text-slate-400 hover:text-white cursor-pointer font-mono text-xs h-10 flex items-center">MARKET_CONTEXT</span>
+<span class="text-slate-400 hover:text-white cursor-pointer font-mono text-xs h-10 flex items-center">EXECUTION_LGA</span>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer" data-icon="schedule">schedule</span>
+<span class="material-symbols-outlined text-slate-400 hover:text-white cursor-pointer" data-icon="settings">settings</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded bg-blue-600 flex items-center justify-center text-[10px] font-bold">JD</div>
+<span class="font-mono text-[10px] font-bold text-slate-300">TRADER_09</span>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="ml-16 mt-10 p-2 h-[calc(100vh-2.5rem)] bg-surface flex flex-col gap-2 overflow-hidden">
+<!-- Top Information Bar -->
+<section class="grid grid-cols-8 gap-[2px] bg-slate-800 p-[2px] border border-slate-800">
+<div class="bg-surface-container-low p-2 flex flex-col">
+<span class="font-label-caps text-slate-500">TRADE ID</span>
+<span class="font-data-md text-primary">T-92A1</span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col">
+<span class="font-label-caps text-slate-500">RFQ</span>
+<span class="font-data-md text-on-surface">RFQ-84F2A</span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col">
+<span class="font-label-caps text-slate-500">STATUS</span>
+<span class="font-data-md text-emerald-400 font-bold">EXECUTED</span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col col-span-2">
+<span class="font-label-caps text-slate-500">INSTRUMENT</span>
+<span class="font-data-md text-on-surface">UST 4.25 2036 <span class="bg-slate-700 px-1 text-[10px] text-slate-400 ml-2">BUY</span></span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col">
+<span class="font-label-caps text-slate-500">SIZE</span>
+<span class="font-data-md text-on-surface">$5MM</span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col">
+<span class="font-label-caps text-slate-500">DEALER</span>
+<span class="font-data-md text-blue-400">CITI</span>
+</div>
+<div class="bg-surface-container-low p-2 flex flex-col">
+<span class="font-label-caps text-slate-500">PRICE / TIME</span>
+<div class="flex flex-col">
+<span class="font-data-md text-on-surface">101.183</span>
+<span class="font-data-sm text-slate-500">10:42:18</span>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="flex-1 grid grid-cols-12 gap-2 overflow-hidden">
+<!-- Execution Quality Column -->
+<div class="col-span-3 flex flex-col gap-2 overflow-hidden">
+<div class="bg-surface-container p-4 border border-slate-800 flex flex-col gap-4">
+<h2 class="font-label-caps text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>
+            EXECUTION QUALITY
+          </h2>
+<div class="grid grid-cols-1 gap-3">
+<div class="flex justify-between items-center border-b border-slate-800 pb-2">
+<span class="font-ui-text text-slate-400">Provider Rank</span>
+<span class="font-data-lg text-emerald-400">#1</span>
+</div>
+<div class="flex justify-between items-center border-b border-slate-800 pb-2">
+<span class="font-ui-text text-slate-400">Slippage</span>
+<span class="font-data-md text-on-surface">5.7 bps</span>
+</div>
+<div class="flex justify-between items-center border-b border-slate-800 pb-2">
+<span class="font-ui-text text-slate-400">Spread Paid</span>
+<span class="font-data-md text-on-surface">5.7 bps</span>
+</div>
+<div class="flex justify-between items-center border-b border-slate-800 pb-2">
+<span class="font-ui-text text-slate-400">Missed Savings</span>
+<span class="font-data-md text-on-surface">$0</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-ui-text text-slate-400">Time to Execute</span>
+<span class="font-data-md text-blue-400">4.2s</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container flex-1 p-4 border border-slate-800 flex flex-col overflow-hidden">
+<h2 class="font-label-caps text-slate-400 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="analytics">analytics</span>
+            DEALER LATENCY (MS)
+          </h2>
+<div class="flex-1 flex flex-col gap-4 justify-center">
+<!-- Latency Bar -->
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono text-slate-500">
+<span>CITI</span>
+<span>124ms</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-blue-500 w-[24%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono text-slate-500">
+<span>JPM</span>
+<span>218ms</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-slate-600 w-[42%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono text-slate-500">
+<span>GS</span>
+<span>402ms</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-slate-600 w-[78%]"></div>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between text-[10px] font-mono text-slate-500">
+<span>MS</span>
+<span>156ms</span>
+</div>
+<div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-slate-600 w-[30%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quotes Visualizer -->
+<div class="col-span-6 flex flex-col gap-2">
+<div class="bg-surface-container-high p-4 border border-slate-800 h-1/2 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-label-caps text-slate-400">QUOTE COMPARISON (PRICE)</h2>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-blue-500"></div>
+<span class="text-[10px] font-mono text-slate-400">EXECUTED</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 bg-slate-600"></div>
+<span class="text-[10px] font-mono text-slate-400">MISSED</span>
+</div>
+</div>
+</div>
+<div class="flex-1 flex items-end justify-around pb-4 relative">
+<!-- Grid Lines -->
+<div class="absolute inset-0 border-b border-slate-800 pointer-events-none flex flex-col justify-between opacity-20">
+<div class="border-t border-slate-600"></div>
+<div class="border-t border-slate-600"></div>
+<div class="border-t border-slate-600"></div>
+<div class="border-t border-slate-600"></div>
+</div>
+<!-- Bar Chart -->
+<div class="flex flex-col items-center gap-2 z-10 w-16">
+<span class="font-data-sm text-slate-400">101.210</span>
+<div class="w-full bg-slate-700 h-[60%] border-t-2 border-slate-500"></div>
+<span class="font-label-caps text-slate-500">GS</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-16">
+<span class="font-data-sm text-slate-400">101.204</span>
+<div class="w-full bg-slate-700 h-[80%] border-t-2 border-slate-500"></div>
+<span class="font-label-caps text-slate-500">JPM</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-16">
+<span class="font-data-sm text-emerald-400">101.183</span>
+<div class="w-full bg-blue-600 h-[100%] border-t-2 border-blue-400"></div>
+<span class="font-label-caps text-blue-400">CITI</span>
+</div>
+<div class="flex flex-col items-center gap-2 z-10 w-16">
+<span class="font-data-sm text-slate-400">101.192</span>
+<div class="w-full bg-slate-700 h-[85%] border-t-2 border-slate-500"></div>
+<span class="font-label-caps text-slate-500">MS</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container flex-1 p-0 border border-slate-800 flex flex-col overflow-hidden">
+<div class="p-3 border-b border-slate-800 bg-slate-900/50">
+<h2 class="font-label-caps text-slate-400">MARKET LIQUIDITY HEATMAP</h2>
+</div>
+<div class="flex-1 relative bg-[#0b0e15] overflow-hidden group">
+<img class="w-full h-full object-cover mix-blend-screen opacity-40" data-alt="abstract financial heatmap with glowing cyan and deep blue blocks representing order book depth institutional trading style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDG8nHdTtoSvYH04AQtGx2bLJ_Ftm7TU7PEo3vamgTYZPqCagcnrRZ8zE4ITWu98ozlN0HKPJRdCtP6DWOkg6pO7RngCeCktGYr92_TDeh_SL6L7DxTp5vWeX9e1Xi7HOPO6ad5O0VLTfhjOLfaTXbHMl1031Kpe1LgQdJ_QxJDRAKGayWgJFZkwJR8jLUUZKItrg8XwM1T-sGVY58e5stJ7AdxhGMboozargHGxYo6ws8RL4k8WTnu4CSPY7omPVA3xbxLOwLw5qav"/>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<div class="text-[10px] font-mono text-blue-400 bg-black/60 px-3 py-1 border border-blue-500/30">LOB_SNAPSHOT_10:42:18.000</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Audit Timeline Column -->
+<div class="col-span-3 flex flex-col bg-surface-container border border-slate-800 overflow-hidden">
+<div class="p-4 border-b border-slate-800 flex justify-between items-center bg-slate-900/50">
+<h2 class="font-label-caps text-slate-400 flex items-center gap-2">
+<span class="material-symbols-outlined text-xs" data-icon="history">history</span>
+            AUDIT TIMELINE
+          </h2>
+<span class="font-data-sm text-slate-500">5 EVENTS</span>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-6 relative">
+<!-- Timeline Vertical Line -->
+<div class="absolute left-6 top-6 bottom-6 w-[1px] bg-slate-800"></div>
+<!-- Timeline Items -->
+<div class="relative pl-8">
+<div class="absolute left-[-2.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 ring-4 ring-slate-950"></div>
+<div class="font-data-sm text-slate-500 mb-1">10:42:01.104</div>
+<div class="bg-slate-900/50 border border-slate-800 p-2 rounded">
+<div class="font-label-caps text-on-surface">RFQ_CREATED</div>
+<div class="text-[10px] text-slate-500 mt-1">SENDER: TRADER_09 [DESK_1A]</div>
+</div>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-[-2.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-blue-500 ring-4 ring-slate-950"></div>
+<div class="font-data-sm text-slate-500 mb-1">10:42:01.231</div>
+<div class="bg-slate-900/50 border border-slate-800 p-2 rounded">
+<div class="font-label-caps text-on-surface">RFQ_SENT_TO_DEALERS</div>
+<div class="text-[10px] text-slate-500 mt-1">CITI, JPM, GS, MS, BARC</div>
+</div>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-[-2.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-amber-500 ring-4 ring-slate-950"></div>
+<div class="font-data-sm text-slate-500 mb-1">10:42:02.004</div>
+<div class="bg-slate-900/50 border border-slate-800 p-2 rounded">
+<div class="font-label-caps text-on-surface">QUOTE_RECEIVED</div>
+<div class="flex justify-between mt-1">
+<span class="text-[10px] text-blue-400">JPM</span>
+<span class="text-[10px] font-mono font-bold text-on-surface">101.204</span>
+</div>
+</div>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-[-2.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-amber-500 ring-4 ring-slate-950"></div>
+<div class="font-data-sm text-slate-500 mb-1">10:42:02.812</div>
+<div class="bg-slate-900/50 border border-slate-800 p-2 rounded">
+<div class="font-label-caps text-on-surface">QUOTE_RECEIVED</div>
+<div class="flex justify-between mt-1">
+<span class="text-[10px] text-blue-400">CITI</span>
+<span class="text-[10px] font-mono font-bold text-on-surface">101.183</span>
+</div>
+</div>
+</div>
+<div class="relative pl-8">
+<div class="absolute left-[-2.5px] top-1.5 w-1.5 h-1.5 rounded-full bg-emerald-500 ring-4 ring-slate-950"></div>
+<div class="font-data-sm text-slate-500 mb-1">10:42:05.442</div>
+<div class="bg-emerald-950/20 border border-emerald-500/30 p-2 rounded">
+<div class="font-label-caps text-emerald-400">QUOTE_EXECUTED</div>
+<div class="flex justify-between mt-1">
+<span class="text-[10px] text-blue-300">CITI</span>
+<span class="text-[10px] font-mono font-bold text-white">101.183</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="p-3 border-t border-slate-800 flex flex-col gap-2">
+<button class="w-full bg-blue-600 text-white font-label-caps py-2 hover:bg-blue-500 transition-colors uppercase">Export Audit Log (PDF)</button>
+</div>
+</div>
+</div>
+<!-- Market Tape / Footer Info -->
+<footer class="h-6 flex items-center justify-between px-2 bg-slate-950 border border-slate-800">
+<div class="flex gap-4 items-center">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span class="text-[9px] font-mono text-slate-400 uppercase">System Status: Nominal</span>
+</div>
+<div class="h-3 w-[1px] bg-slate-700"></div>
+<div class="flex gap-3 overflow-hidden">
+<span class="text-[9px] font-mono text-slate-500"><span class="text-white">US10Y:</span> 4.182 (-0.02)</span>
+<span class="text-[9px] font-mono text-slate-500"><span class="text-white">US02Y:</span> 4.451 (+0.01)</span>
+<span class="text-[9px] font-mono text-slate-500"><span class="text-white">US30Y:</span> 4.310 (-0.03)</span>
+</div>
+</div>
+<div class="font-mono text-[9px] text-slate-500">LAST_UPDATE: 10:43:12 UTC</div>
+</footer>
+</main>
+</body></html>

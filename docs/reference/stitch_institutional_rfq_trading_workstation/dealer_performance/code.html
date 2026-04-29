@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Public+Sans:wght@400;700;900&amp;family=Roboto+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-highest": "#32353c",
+            "on-error": "#690005",
+            "on-tertiary-fixed-variant": "#723600",
+            "on-background": "#e1e2ec",
+            "tertiary-fixed": "#ffdcc6",
+            "surface-tint": "#adc6ff",
+            "on-secondary": "#293040",
+            "on-tertiary-container": "#461f00",
+            "primary-fixed": "#d8e2ff",
+            "secondary-fixed-dim": "#c0c6db",
+            "on-primary": "#002e6a",
+            "surface": "#10131a",
+            "secondary-fixed": "#dce2f7",
+            "on-primary-fixed": "#001a42",
+            "inverse-on-surface": "#2e3038",
+            "primary-fixed-dim": "#adc6ff",
+            "on-primary-container": "#00285d",
+            "on-tertiary-fixed": "#311400",
+            "tertiary-fixed-dim": "#ffb786",
+            "on-primary-fixed-variant": "#004395",
+            "primary-container": "#4d8eff",
+            "secondary": "#c0c6db",
+            "surface-container": "#1d2027",
+            "inverse-surface": "#e1e2ec",
+            "on-surface": "#e1e2ec",
+            "on-tertiary": "#502400",
+            "background": "#10131a",
+            "on-secondary-fixed": "#141b2b",
+            "tertiary-container": "#df7412",
+            "outline": "#8c909f",
+            "surface-dim": "#10131a",
+            "surface-variant": "#32353c",
+            "on-secondary-container": "#aeb5c9",
+            "surface-container-lowest": "#0b0e15",
+            "on-surface-variant": "#c2c6d6",
+            "surface-container-high": "#272a31",
+            "on-secondary-fixed-variant": "#404758",
+            "primary": "#adc6ff",
+            "outline-variant": "#424754",
+            "error": "#ffb4ab",
+            "error-container": "#93000a",
+            "surface-container-low": "#191b23",
+            "secondary-container": "#404758",
+            "tertiary": "#ffb786",
+            "inverse-primary": "#005ac2",
+            "surface-bright": "#363941",
+            "on-error-container": "#ffdad6"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "cell-padding-x": "8px",
+            "container-margin": "12px",
+            "panel-gap": "2px",
+            "unit": "4px",
+            "cell-padding-y": "4px"
+          },
+          "fontFamily": {
+            "ui-text": ["Public Sans", "sans-serif"],
+            "data-md": ["Roboto Mono", "monospace"],
+            "data-lg": ["Roboto Mono", "monospace"],
+            "data-sm": ["Roboto Mono", "monospace"],
+            "label-caps": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "ui-text": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "data-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+            "data-lg": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "data-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #10131a;
+      color: #e1e2ec;
+      overflow: hidden;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      font-size: 20px;
+    }
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: #10131a; }
+    ::-webkit-scrollbar-thumb { background: #32353c; }
+    ::-webkit-scrollbar-thumb:hover { background: #424754; }
+  </style>
+</head>
+<body class="font-ui-text text-ui-text">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full flex flex-col items-center py-4 bg-slate-950 docked h-full w-16 border-r border-slate-800 transition-colors duration-150 z-50">
+<div class="text-blue-500 font-black text-lg p-4 mb-4">BW</div>
+<nav class="flex flex-col gap-4 items-center w-full">
+<div class="group flex flex-col items-center gap-1 w-full text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer py-2">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider">Dash</span>
+</div>
+<div class="group flex flex-col items-center gap-1 w-full text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer py-2">
+<span class="material-symbols-outlined" data-icon="add_box">add_box</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider">New</span>
+</div>
+<div class="group flex flex-col items-center gap-1 w-full text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer py-2">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider">RFQs</span>
+</div>
+<div class="group flex flex-col items-center gap-1 w-full text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer py-2">
+<span class="material-symbols-outlined" data-icon="swap_horiz">swap_horiz</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider">Trades</span>
+</div>
+<div class="group flex flex-col items-center gap-1 w-full text-blue-500 bg-slate-900 border-l-2 border-blue-500 py-2">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider">Dealers</span>
+</div>
+<div class="group flex flex-col items-center gap-1 w-full text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer py-2">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider">Audit</span>
+</div>
+<div class="group flex flex-col items-center gap-1 w-full text-slate-500 hover:bg-slate-900 hover:text-slate-300 cursor-pointer py-2">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-public-sans text-[8px] uppercase tracking-wider">Docs</span>
+</div>
+</nav>
+</aside>
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-4 ml-16 w-[calc(100%-4rem)] bg-slate-900 docked full-width top-0 h-10 border-b border-slate-800 z-40">
+<div class="flex items-center gap-4">
+<h1 class="font-mono text-xs font-bold text-blue-500 uppercase tracking-tighter">BondWorks Lite / Dealer Analytics</h1>
+<div class="h-4 w-px bg-slate-800 mx-2"></div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col">
+<span class="text-[9px] text-slate-500 font-label-caps uppercase">US10Y Yield</span>
+<span class="font-data-sm text-blue-400">4.241%</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[9px] text-slate-500 font-label-caps uppercase">VIX Index</span>
+<span class="font-data-sm text-tertiary">14.82</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-white" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-white" data-icon="schedule">schedule</span>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer hover:text-white" data-icon="settings">settings</span>
+</div>
+<div class="flex items-center gap-2 pl-4 border-l border-slate-800">
+<span class="font-mono text-[10px] text-slate-300">TRADER_09</span>
+<div class="w-6 h-6 rounded-sm bg-blue-600 flex items-center justify-center text-[10px] font-bold">TR</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-16 mt-0 h-[calc(100vh-2.5rem)] bg-background flex flex-col gap-[2px] p-[2px]">
+<!-- Top Rail Stats -->
+<div class="grid grid-cols-4 gap-[2px] h-20 shrink-0">
+<div class="bg-surface-container flex flex-col justify-center px-4 border border-slate-800">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px]">Total RFQs Sent</span>
+<span class="font-data-lg text-primary">210</span>
+</div>
+<div class="bg-surface-container flex flex-col justify-center px-4 border border-slate-800">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px]">Aggregate Win Rate</span>
+<span class="font-data-lg text-primary">19.2%</span>
+</div>
+<div class="bg-surface-container flex flex-col justify-center px-4 border border-slate-800">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px]">Avg Execution Latency</span>
+<span class="font-data-lg text-tertiary">1.12s</span>
+</div>
+<div class="bg-surface-container flex flex-col justify-center px-4 border border-slate-800">
+<span class="font-label-caps text-on-surface-variant uppercase text-[10px]">Primary Counterparty</span>
+<span class="font-data-lg text-primary">CITI</span>
+</div>
+</div>
+<!-- Main Data Table Container -->
+<div class="flex-1 bg-surface-container-lowest overflow-hidden border border-slate-800 flex flex-col">
+<!-- Table Header -->
+<div class="flex items-center h-8 bg-surface-container-highest px-4 sticky top-0 z-10 border-b border-slate-800">
+<div class="w-10 font-label-caps text-slate-400">#</div>
+<div class="flex-1 font-label-caps text-slate-400">DEALER</div>
+<div class="w-32 font-label-caps text-slate-400 text-right">RFQs</div>
+<div class="w-32 font-label-caps text-slate-400 text-right">QUOTES</div>
+<div class="w-40 font-label-caps text-slate-400 text-right">WIN RATE</div>
+<div class="w-40 font-label-caps text-slate-400 text-right">AVG SPREAD</div>
+<div class="w-40 font-label-caps text-slate-400 text-right">LATENCY</div>
+</div>
+<!-- Table Body -->
+<div class="flex-1 overflow-y-auto">
+<!-- Row 1: CITI -->
+<div class="flex items-center h-10 px-4 border-b border-slate-800 hover:bg-slate-900 transition-colors">
+<div class="w-10 font-data-sm text-slate-500">01</div>
+<div class="flex-1 flex items-center gap-3">
+<div class="w-6 h-6 bg-blue-500/10 border border-blue-500/30 flex items-center justify-center">
+<span class="font-bold text-[10px] text-blue-400">CT</span>
+</div>
+<span class="font-data-md text-on-surface font-bold">CITI</span>
+<span class="bg-primary/10 text-primary text-[9px] font-bold px-1 rounded-sm border border-primary/20">TOP RANK</span>
+</div>
+<div class="w-32 font-data-md text-right text-on-surface">42</div>
+<div class="w-32 font-data-md text-right text-on-surface">39</div>
+<div class="w-40 font-data-md text-right text-primary">31%</div>
+<div class="w-40 font-data-md text-right text-on-surface">6.1 bps</div>
+<div class="w-40 font-data-md text-right text-tertiary">920ms</div>
+</div>
+<!-- Row 2: JPM -->
+<div class="flex items-center h-10 px-4 border-b border-slate-800 hover:bg-slate-900 transition-colors">
+<div class="w-10 font-data-sm text-slate-500">02</div>
+<div class="flex-1 flex items-center gap-3">
+<div class="w-6 h-6 bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="font-bold text-[10px] text-slate-300">JP</span>
+</div>
+<span class="font-data-md text-on-surface font-bold">JPM</span>
+</div>
+<div class="w-32 font-data-md text-right text-on-surface">42</div>
+<div class="w-32 font-data-md text-right text-on-surface">41</div>
+<div class="w-40 font-data-md text-right text-primary">24%</div>
+<div class="w-40 font-data-md text-right text-on-surface">7.4 bps</div>
+<div class="w-40 font-data-md text-right text-green-400">410ms</div>
+</div>
+<!-- Row 3: GS -->
+<div class="flex items-center h-10 px-4 border-b border-slate-800 hover:bg-slate-900 transition-colors">
+<div class="w-10 font-data-sm text-slate-500">03</div>
+<div class="flex-1 flex items-center gap-3">
+<div class="w-6 h-6 bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="font-bold text-[10px] text-slate-300">GS</span>
+</div>
+<span class="font-data-md text-on-surface font-bold">GS</span>
+</div>
+<div class="w-32 font-data-md text-right text-on-surface">42</div>
+<div class="w-32 font-data-md text-right text-on-surface">38</div>
+<div class="w-40 font-data-md text-right text-on-surface">19%</div>
+<div class="w-40 font-data-md text-right text-on-surface">6.8 bps</div>
+<div class="w-40 font-data-md text-right text-tertiary">780ms</div>
+</div>
+<!-- Row 4: MS -->
+<div class="flex items-center h-10 px-4 border-b border-slate-800 hover:bg-slate-900 transition-colors">
+<div class="w-10 font-data-sm text-slate-500">04</div>
+<div class="flex-1 flex items-center gap-3">
+<div class="w-6 h-6 bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="font-bold text-[10px] text-slate-300">MS</span>
+</div>
+<span class="font-data-md text-on-surface font-bold">MS</span>
+</div>
+<div class="w-32 font-data-md text-right text-on-surface">42</div>
+<div class="w-32 font-data-md text-right text-on-surface">35</div>
+<div class="w-40 font-data-md text-right text-on-surface">12%</div>
+<div class="w-40 font-data-md text-right text-error">9.5 bps</div>
+<div class="w-40 font-data-md text-right text-error">1.4s</div>
+</div>
+<!-- Row 5: BOFA -->
+<div class="flex items-center h-10 px-4 border-b border-slate-800 hover:bg-slate-900 transition-colors">
+<div class="w-10 font-data-sm text-slate-500">05</div>
+<div class="flex-1 flex items-center gap-3">
+<div class="w-6 h-6 bg-slate-800 border border-slate-700 flex items-center justify-center">
+<span class="font-bold text-[10px] text-slate-300">BA</span>
+</div>
+<span class="font-data-md text-on-surface font-bold">BOFA</span>
+</div>
+<div class="w-32 font-data-md text-right text-on-surface">42</div>
+<div class="w-32 font-data-md text-right text-on-surface">33</div>
+<div class="w-40 font-data-md text-right text-error">9%</div>
+<div class="w-40 font-data-md text-right text-error">10.1 bps</div>
+<div class="w-40 font-data-md text-right text-error">1.7s</div>
+</div>
+</div>
+<!-- Footer Table Stats -->
+<div class="h-6 bg-slate-900 px-4 flex items-center border-t border-slate-800 gap-6">
+<span class="font-data-sm text-slate-500">Items: 5</span>
+<span class="font-data-sm text-slate-500">Filter: Active Dealers Only</span>
+<div class="ml-auto flex gap-4">
+<span class="font-data-sm text-slate-400">Export: <span class="text-blue-500 cursor-pointer">CSV</span> | <span class="text-blue-500 cursor-pointer">XLSX</span></span>
+</div>
+</div>
+</div>
+<!-- Bottom Secondary Panels -->
+<div class="grid grid-cols-12 gap-[2px] h-48 shrink-0">
+<!-- Performance Trend Chart Simulation -->
+<div class="col-span-8 bg-surface-container border border-slate-800 p-4">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-caps text-slate-400 uppercase">RFQ Win Rate vs Quote Latency</span>
+<div class="flex gap-2">
+<div class="flex items-center gap-1"><div class="w-2 h-2 bg-blue-500"></div><span class="text-[9px] font-label-caps">WIN RATE</span></div>
+<div class="flex items-center gap-1"><div class="w-2 h-2 bg-tertiary"></div><span class="text-[9px] font-label-caps">LATENCY</span></div>
+</div>
+</div>
+<div class="w-full h-24 flex items-end justify-between gap-1">
+<div class="flex-1 bg-blue-500/20 border-t border-blue-500" style="height: 90%;"></div>
+<div class="flex-1 bg-blue-500/20 border-t border-blue-500" style="height: 70%;"></div>
+<div class="flex-1 bg-blue-500/20 border-t border-blue-500" style="height: 60%;"></div>
+<div class="flex-1 bg-blue-500/20 border-t border-blue-500" style="height: 40%;"></div>
+<div class="flex-1 bg-blue-500/20 border-t border-blue-500" style="height: 30%;"></div>
+<div class="flex-1 bg-tertiary/20 border-t border-tertiary" style="height: 40%;"></div>
+<div class="flex-1 bg-tertiary/20 border-t border-tertiary" style="height: 20%;"></div>
+<div class="flex-1 bg-tertiary/20 border-t border-tertiary" style="height: 35%;"></div>
+<div class="flex-1 bg-tertiary/20 border-t border-tertiary" style="height: 70%;"></div>
+<div class="flex-1 bg-tertiary/20 border-t border-tertiary" style="height: 85%;"></div>
+</div>
+</div>
+<!-- Quick Actions / Alerts -->
+<div class="col-span-4 bg-surface-container border border-slate-800 p-4">
+<span class="font-label-caps text-slate-400 uppercase mb-4 block">Market Health Alerts</span>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-[11px] bg-error/10 text-error p-2 border-l-2 border-error">
+<span class="material-symbols-outlined !text-[14px]" data-icon="warning">warning</span>
+<span>High Latency Detected: MS (1.4s)</span>
+</div>
+<div class="flex items-center gap-2 text-[11px] bg-primary/10 text-primary p-2 border-l-2 border-primary">
+<span class="material-symbols-outlined !text-[14px]" data-icon="info">info</span>
+<span>Quote Coverage optimal: 92.8%</span>
+</div>
+<div class="flex items-center gap-2 text-[11px] bg-slate-800 text-slate-400 p-2 border-l-2 border-slate-600">
+<span class="material-symbols-outlined !text-[14px]" data-icon="update">update</span>
+<span>Feed updated 45ms ago</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay Modal for Trade Entry (Reference only) -->
+<div class="hidden fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[100] flex items-center justify-center">
+<div class="w-[400px] bg-surface-container-high border border-slate-700 p-4">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-mono text-sm font-bold text-blue-400 uppercase">Execute New RFQ</h2>
+<span class="material-symbols-outlined cursor-pointer text-slate-500" data-icon="close">close</span>
+</div>
+<div class="space-y-4">
+<div>
+<label class="block font-label-caps text-[10px] text-slate-500 uppercase mb-1">Ticker / Demo ID</label>
+<input class="w-full bg-slate-900 border border-slate-800 text-data-md focus:border-blue-500 focus:ring-0 rounded-none h-8" type="text" value="BWUST10Y36"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-label-caps text-[10px] text-slate-500 uppercase mb-1">Size (MM)</label>
+<input class="w-full bg-slate-900 border border-slate-800 text-data-md focus:border-blue-500 focus:ring-0 rounded-none h-8" type="text" value="25.0"/>
+</div>
+<div>
+<label class="block font-label-caps text-[10px] text-slate-500 uppercase mb-1">Side</label>
+<div class="flex h-8">
+<button class="flex-1 bg-green-900/30 text-green-400 border border-green-900 font-bold text-xs">BUY</button>
+<button class="flex-1 bg-slate-800 text-slate-500 border border-slate-700 font-bold text-xs">SELL</button>
+</div>
+</div>
+</div>
+<button class="w-full bg-blue-600 text-white font-mono text-sm font-bold py-3 mt-4 hover:bg-blue-500 transition-colors uppercase">Blast RFQ to Dealers</button>
+</div>
+</div>
+</div>
+</body></html>

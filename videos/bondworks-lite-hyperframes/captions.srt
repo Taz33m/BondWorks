@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:04,000
+Dealer selection is the first execution decision.
+
+2
+00:00:04,000 --> 00:00:12,000
+BondWorks scores counterparties before an RFQ is sent.
+
+3
+00:00:12,000 --> 00:00:19,000
+A trader sends a five-million-dollar RFQ for a ten-year Treasury.
+
+4
+00:00:19,000 --> 00:00:28,000
+Quotes arrive with price, yield, spread, size, latency, and status.
+
+5
+00:00:28,000 --> 00:00:34,000
+Choosing a non-best quote requires a best-execution rationale.
+
+6
+00:00:34,000 --> 00:00:43,000
+The fill is compared against best quote, cover price, mid, last print, and tape VWAP.
+
+7
+00:00:43,000 --> 00:00:51,000
+The audit trail records every lifecycle event from RFQ creation to analytics.
+
+8
+00:00:51,000 --> 00:00:58,000
+Underneath is Spring Boot, Postgres, Redis, Redpanda, WebSockets, and a Python strategy API.
+
+9
+00:00:58,000 --> 00:01:00,000
+BondWorks Lite: execution intelligence for electronic bond markets.
