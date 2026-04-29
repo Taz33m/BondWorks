@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="docs/demo/bondworks-lite-demo.mp4">
+  <a href="https://youtu.be/SVm1ZUcQQw4">
     <img alt="Watch demo" src="https://img.shields.io/badge/Watch%20Demo-MP4-2563eb?style=for-the-badge&logo=github" />
   </a>
   <a href="docs/architecture.md">
@@ -21,7 +21,7 @@
 </p>
 
 <p align="center">
-  <a href="docs/demo/bondworks-lite-demo.mp4">
+  <a href="https://youtu.be/SVm1ZUcQQw4">
     <img src="docs/reference/stitch_institutional_rfq_trading_workstation/live_rfq_blotter/screen.png" alt="BondWorks Lite live RFQ blotter" width="100%" />
   </a>
 </p>
