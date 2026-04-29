@@ -63,3 +63,36 @@ Returns:
   "reference_rates": [{ "rate_type": "SOFR", "value": 3.66 }]
 }
 ```
+
+## Execution Quality
+
+`GET /api/execution-quality`
+
+Returns historical transaction-cost analytics for the execution quality dashboard:
+
+```json
+{
+  "summary": {
+    "total_trades": 2,
+    "avg_slippage_bps": 2.87,
+    "avg_cover_distance_bps": 0.79,
+    "avg_quote_dispersion_bps": 3.56,
+    "total_missed_savings_usd": 0
+  },
+  "slippage_over_time": [
+    {
+      "bucket": "2026-04-29T01:00:00Z",
+      "bond_code": "UST-10Y-2036",
+      "dealer": "CITI",
+      "slippage_bps": 5.74
+    }
+  ],
+  "dealer_win_rate": [],
+  "quote_dispersion_by_instrument_type": [],
+  "dealer_latency_distribution": [],
+  "best_vs_executed_quote_history": [],
+  "missed_savings_leaderboard": []
+}
+```
+
+See [execution-quality-dashboard.md](execution-quality-dashboard.md) for the product workflow and metric definitions.

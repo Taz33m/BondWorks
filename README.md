@@ -208,6 +208,7 @@ print(report.slippage_bps)
 - [API Reference](docs/api.md)
 - [Data Model](docs/data-model.md)
 - [Data Strategy](docs/data-strategy.md)
+- [Historical Execution Quality Dashboard](docs/execution-quality-dashboard.md)
 - [Demo Script](docs/demo-script.md)
 
 ## Project Status
@@ -216,4 +217,4 @@ BondWorks Lite is an MVP portfolio project focused on the highest-signal RFQ lif
 
 `RFQ creation -> live dealer quotes -> execution -> analytics -> audit`
 
-Future work includes richer market simulation, historical execution-quality dashboards, portfolio/list RFQs, FIX-like protocol modeling, and market-data replay.
+Future work includes richer market simulation, portfolio/list RFQs, FIX-like protocol modeling, and market-data replay.
