@@ -1,14 +1,30 @@
-# BondWorks Lite
-
-Fixed-income RFQ execution workstation for simulated dealer liquidity, best-execution analytics, and audit-ready trade lifecycle infrastructure.
-
 <p align="center">
-  <img src="docs/logo.png" alt="BondWorks Lite logo" width="120" />
+  <img src="docs/logo-readme.png" alt="BondWorks Lite logo" width="560" />
 </p>
 
-<video src="docs/demo/bondworks-lite-demo.mp4" controls width="100%"></video>
+<h1 align="center">BondWorks Lite</h1>
 
-[Watch the demo video](docs/demo/bondworks-lite-demo.mp4)
+<p align="center">
+  Fixed-income RFQ execution workstation for simulated dealer liquidity, best-execution analytics, and audit-ready trade lifecycle infrastructure.
+</p>
+
+<p align="center">
+  <a href="docs/demo/bondworks-lite-demo.mp4">
+    <img alt="Watch demo" src="https://img.shields.io/badge/Watch%20Demo-MP4-2563eb?style=for-the-badge&logo=github" />
+  </a>
+  <a href="docs/architecture.md">
+    <img alt="Architecture" src="https://img.shields.io/badge/Architecture-System%20Design-111827?style=for-the-badge" />
+  </a>
+  <a href="docs/api.md">
+    <img alt="API docs" src="https://img.shields.io/badge/API-Reference-374151?style=for-the-badge" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="docs/demo/bondworks-lite-demo.mp4">
+    <img src="docs/reference/stitch_institutional_rfq_trading_workstation/live_rfq_blotter/screen.png" alt="BondWorks Lite live RFQ blotter" width="100%" />
+  </a>
+</p>
 
 ## Overview
 
