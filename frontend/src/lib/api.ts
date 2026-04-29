@@ -92,6 +92,9 @@ export const api = {
   dashboard() {
     return request<AnyRecord>('/api/dashboard');
   },
+  executionQuality() {
+    return request<AnyRecord>('/api/execution-quality');
+  },
   marketContext() {
     return request<AnyRecord>('/api/market/context');
   }
