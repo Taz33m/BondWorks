@@ -149,6 +149,7 @@ Key endpoints:
 - `POST /api/rfqs/{id}/execute`
 - `GET /api/trades/{id}/analytics`
 - `GET /api/audit-events`
+- `GET /api/event-replay/rfqs/{id}`
 - `GET /api/dealers/performance`
 
 WebSocket topics:
@@ -186,6 +187,7 @@ print(report.slippage_bps)
 - [API Reference](docs/api.md)
 - [Data Model](docs/data-model.md)
 - [Data Strategy](docs/data-strategy.md)
+- [Event Replay](docs/event-replay.md)
 - [Demo Script](docs/demo-script.md)
 
 ## Project Status
@@ -194,4 +196,4 @@ BondWorks Lite is an MVP portfolio project focused on the highest-signal RFQ lif
 
 `RFQ creation -> live dealer quotes -> execution -> analytics -> audit`
 
-Future work includes richer market simulation, historical execution-quality dashboards, portfolio/list RFQs, FIX-like protocol modeling, and market-data replay.
+Future work includes richer market simulation, historical execution-quality dashboards, portfolio/list RFQs, FIX-like protocol modeling, and broader market-data replay.

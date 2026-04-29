@@ -66,6 +66,7 @@ function Shell({ onLogout }: { onLogout: () => void }) {
     : location.pathname.startsWith('/trades') ? 'trades'
     : location.pathname.startsWith('/dealers') ? 'dealers'
     : location.pathname.startsWith('/audit') ? 'audit'
+    : location.pathname.startsWith('/replay') ? 'replay'
     : location.pathname.startsWith('/docs') ? 'docs'
     : 'dashboard';
 
@@ -79,6 +80,7 @@ function Shell({ onLogout }: { onLogout: () => void }) {
         <NavIcon to="/trades" id="trades" active={active} icon={<Shuffle size={20} />} label="Trades" />
         <NavIcon to="/dealers" id="dealers" active={active} icon={<BriefcaseBusiness size={20} />} label="Dealers" />
         <NavIcon to="/audit" id="audit" active={active} icon={<History size={20} />} label="Audit" />
+        <NavIcon to="/replay" id="replay" active={active} icon={<TimerReset size={20} />} label="Replay" />
         <div style={{ marginTop: 'auto' }} />
         <NavIcon to="/docs" id="docs" active={active} icon={<FileText size={20} />} label="Docs" />
       </aside>
@@ -124,6 +126,8 @@ function Shell({ onLogout }: { onLogout: () => void }) {
           <Route path="/trades/:id" element={<TradeAnalytics />} />
           <Route path="/dealers" element={<DealerPerformance />} />
           <Route path="/audit" element={<AuditLog />} />
+          <Route path="/replay" element={<EventReplay />} />
+          <Route path="/replay/:rfqId" element={<EventReplay />} />
           <Route path="/docs" element={<Docs />} />
         </Routes>
       </main>
@@ -147,6 +151,7 @@ function topbarLabel(active: string) {
     trades: 'Analytics',
     dealers: 'Dealer Analytics',
     audit: 'Audit Log',
+    replay: 'Event Replay',
     docs: 'Docs'
   }[active] ?? 'Terminal';
 }
@@ -642,6 +647,97 @@ function AuditLog() {
   );
 }
 
+function EventReplay() {
+  const { rfqId } = useParams();
+  const navigate = useNavigate();
+  const rfqs = useQuery({ queryKey: ['rfqs'], queryFn: api.rfqs });
+  const replay = useQuery({
+    queryKey: ['event-replay', rfqId],
+    queryFn: () => api.eventReplay(rfqId!),
+    enabled: Boolean(rfqId)
+  });
+
+  useEffect(() => {
+    if (rfqId || !rfqs.data?.length) return;
+    const preferred = rfqs.data.find(r => r.status === 'EXECUTED') ?? rfqs.data[0];
+    navigate(`/replay/${preferred.id}`, { replace: true });
+  }, [navigate, rfqId, rfqs.data]);
+
+  const rfq = replay.data?.rfq ?? {};
+  const events = replay.data?.events ?? [];
+  const phaseOrder = replay.data?.phase_order ?? ['RFQ', 'QUOTES_RECEIVED', 'EXECUTION', 'ANALYTICS', 'AUDIT'];
+  const phaseCounts = Object.fromEntries(phaseOrder.map((phase: string) => [phase, events.filter((event: AnyRecord) => event.phase === phase).length]));
+
+  return (
+    <>
+      <section className="metric-grid">
+        <Metric label="Replay RFQ" value={shortId(rfq.id ?? rfqId)} color="blue" />
+        <Metric label="Status" value={rfq.status ?? '--'} color={rfq.status === 'EXECUTED' ? 'green' : undefined} />
+        <Metric label="Security" value={rfq.ticker ?? '--'} />
+        <Metric label="Events" value={events.length} color="orange" />
+      </section>
+      <div className="grid-12" style={{ flex: 1 }}>
+        <section className="panel-low" style={{ gridColumn: 'span 3', overflow: 'auto' }}>
+          <div className="panel-header"><span className="label">Replay Source</span><span className="mono">{rfqs.data?.length ?? 0} RFQS</span></div>
+          <table className="table">
+            <thead><tr><th>RFQ</th><th>Status</th><th>Bond</th></tr></thead>
+            <tbody>{rfqs.data?.map(row => (
+              <tr key={row.id} onClick={() => navigate(`/replay/${row.id}`)} style={{ cursor: 'pointer', background: row.id === rfqId ? 'var(--surface)' : undefined }}>
+                <td className="mono" style={{ color: 'var(--blue-soft)' }}>{shortId(row.id)}</td>
+                <td><span className={`badge ${statusTone(row.status)}`}>{row.status}</span></td>
+                <td className="mono">{row.bond_code ?? row.ticker}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </section>
+        <section className="panel" style={{ gridColumn: 'span 3', padding: 18 }}>
+          <div className="label">Lifecycle Coverage</div>
+          <div style={{ display: 'grid', gap: 12, marginTop: 18 }}>
+            {phaseOrder.map((phase: string, index: number) => (
+              <div key={phase} className="panel-low" style={{ padding: 12, borderColor: phaseCounts[phase] ? 'var(--border)' : '#5b3d29' }}>
+                <div className="mono" style={{ color: phaseCounts[phase] ? 'var(--blue-soft)' : 'var(--orange)', fontSize: 18 }}>{String(index + 1).padStart(2, '0')}</div>
+                <div className={`badge ${phaseTone(phase)}`}>{phase}</div>
+                <div className="mono" style={{ color: 'var(--muted)', marginTop: 8 }}>{phaseCounts[phase] ?? 0} EVENTS</div>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="panel-low" style={{ gridColumn: 'span 6', overflow: 'auto' }}>
+          <div className="panel-header">
+            <span className="label">Replay Timeline</span>
+            <span className="mono">{rfq.bond_code ?? '--'} // {money(rfq.quantity, true)} // {rfq.side ?? '--'}</span>
+          </div>
+          <div style={{ padding: 18, display: 'grid', gap: 12 }}>
+            {events.map((event: AnyRecord) => (
+              <div key={`${event.sequence}-${event.entity_id}`} className="panel-low" style={{ padding: 14 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 8 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <span className="mono" style={{ color: 'var(--muted-2)' }}>#{String(event.sequence).padStart(2, '0')}</span>
+                    <span className={`badge ${phaseTone(event.phase)}`}>{event.phase}</span>
+                    <span className="badge">{event.event_type}</span>
+                  </div>
+                  <span className="mono" style={{ color: 'var(--muted)' }}>{localTime(event.occurred_at)}</span>
+                </div>
+                <div className="mono" style={{ color: 'var(--text)', fontSize: 14 }}>{event.summary}</div>
+                <div className="mono" style={{ color: 'var(--muted)', marginTop: 6 }}>
+                  {event.entity_type} {shortId(event.entity_id)} // {event.actor}
+                </div>
+                <pre className="mono" style={{ whiteSpace: 'pre-wrap', color: 'var(--muted)', fontSize: 11, margin: '10px 0 0' }}>{JSON.stringify(event.payload, null, 2)}</pre>
+              </div>
+            ))}
+            {!replay.isLoading && rfqId && events.length === 0 ? (
+              <div className="panel-low" style={{ padding: 20, color: 'var(--muted)' }}>
+                No audit-backed replay events found for this RFQ yet.
+              </div>
+            ) : null}
+          </div>
+        </section>
+      </div>
+      <StatusTape left={`Replay loaded ${events.length} lifecycle events`} />
+    </>
+  );
+}
+
 function DealerPerformance() {
   const perf = useQuery({ queryKey: ['dealer-performance'], queryFn: api.dealerPerformance });
   const rows = perf.data?.dealers ?? [];
@@ -910,6 +1006,14 @@ function statusTone(status: unknown) {
   if (['OPEN', 'QUOTING', 'EXECUTED', 'ACTIVE'].includes(value)) return 'green';
   if (['EXPIRED', 'CANCELLED', 'FAILED', 'INACTIVE'].includes(value)) return 'red';
   if (['DRAFT', 'WAITING'].includes(value)) return 'orange';
+  return '';
+}
+
+function phaseTone(phase: unknown) {
+  const value = String(phase);
+  if (['RFQ', 'ANALYTICS'].includes(value)) return 'blue';
+  if (['EXECUTION', 'AUDIT'].includes(value)) return 'green';
+  if (['QUOTES_RECEIVED'].includes(value)) return 'orange';
   return '';
 }
 

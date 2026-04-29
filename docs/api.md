@@ -63,3 +63,36 @@ Returns:
   "reference_rates": [{ "rate_type": "SOFR", "value": 3.66 }]
 }
 ```
+
+## Event Replay
+
+`GET /api/event-replay/rfqs/{rfqId}`
+
+Returns an ordered RFQ lifecycle replay from persisted audit events:
+
+```json
+{
+  "rfq": {
+    "id": "cccccccc-0000-0000-0000-000000000001",
+    "status": "EXECUTED",
+    "bond_code": "UST-10Y-2036",
+    "quote_count": 4,
+    "trade_count": 1
+  },
+  "phase_order": ["RFQ", "QUOTES_RECEIVED", "EXECUTION", "ANALYTICS", "AUDIT"],
+  "events": [
+    {
+      "sequence": 1,
+      "occurred_at": "2026-04-29T01:00:00Z",
+      "phase": "RFQ",
+      "event_type": "RFQ_CREATED",
+      "entity_type": "RFQ",
+      "actor": "Demo Trader",
+      "summary": "RFQ opened and stored",
+      "payload": {}
+    }
+  ]
+}
+```
+
+See [event-replay.md](event-replay.md) for the replay workflow and phase model.

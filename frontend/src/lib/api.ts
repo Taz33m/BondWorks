@@ -83,6 +83,9 @@ export const api = {
   audit(search = '', eventType = 'ALL_EVENTS') {
     return request<AnyRecord[]>(`/api/audit-events?search=${encodeURIComponent(search)}&event_type=${eventType}`);
   },
+  eventReplay(rfqId: string) {
+    return request<AnyRecord>(`/api/event-replay/rfqs/${rfqId}`);
+  },
   dealerPerformance() {
     return request<AnyRecord>('/api/dealers/performance');
   },
