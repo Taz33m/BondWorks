@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://youtu.be/SVm1ZUcQQw4">
-    <img alt="Watch demo" src="https://img.shields.io/badge/Watch%20Demo-MP4-2563eb?style=for-the-badge&logo=github" />
+    <img alt="Watch demo" src="https://img.shields.io/badge/Watch%20Demo-YouTube-c4302b?style=for-the-badge&logo=youtube" />
   </a>
   <a href="docs/architecture.md">
     <img alt="Architecture" src="https://img.shields.io/badge/Architecture-System%20Design-111827?style=for-the-badge" />
@@ -81,7 +81,7 @@ flowchart LR
 - Frontend: React, TypeScript, Vite, WebSocket/STOMP client, workstation-style CSS.
 - SDK: Python, httpx, Pydantic.
 - DevOps: Docker Compose, seeded demo data, local-first development.
-- Video: HyperFrames HTML composition with generated voiceover, subtitles, and rendered MP4.
+- Demo: narrated YouTube walkthrough of the RFQ workflow.
 
 ## Data Strategy
 

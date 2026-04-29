@@ -21,9 +21,3 @@ coverage/
 frontend/.vite/
 *.tsbuildinfo
 backend/.mvn/wrapper/maven-wrapper.jar
-docs/demo/work-*/
-videos/**/capture/
-videos/**/snapshots/
-videos/**/renders/
-videos/**/.thumbnails/
-videos/**/.waveform-cache/
