@@ -63,6 +63,7 @@ function Shell({ onLogout }: { onLogout: () => void }) {
   const active = location.pathname.startsWith('/rfq/new') ? 'new'
     : location.pathname.startsWith('/rfqs') ? 'rfqs'
     : location.pathname.startsWith('/rfq/') ? 'rfqs'
+    : location.pathname.startsWith('/quality') ? 'quality'
     : location.pathname.startsWith('/trades') ? 'trades'
     : location.pathname.startsWith('/dealers') ? 'dealers'
     : location.pathname.startsWith('/audit') ? 'audit'
@@ -77,6 +78,7 @@ function Shell({ onLogout }: { onLogout: () => void }) {
         <NavIcon to="/dashboard" id="dashboard" active={active} icon={<LayoutGrid size={20} />} label="Dash" />
         <NavIcon to="/rfq/new" id="new" active={active} icon={<PlusSquare size={20} />} label="New" />
         <NavIcon to="/rfqs" id="rfqs" active={active} icon={<ListTree size={20} />} label="RFQs" />
+        <NavIcon to="/quality" id="quality" active={active} icon={<Activity size={20} />} label="Quality" />
         <NavIcon to="/trades" id="trades" active={active} icon={<Shuffle size={20} />} label="Trades" />
         <NavIcon to="/dealers" id="dealers" active={active} icon={<BriefcaseBusiness size={20} />} label="Dealers" />
         <NavIcon to="/audit" id="audit" active={active} icon={<History size={20} />} label="Audit" />
@@ -122,6 +124,7 @@ function Shell({ onLogout }: { onLogout: () => void }) {
           <Route path="/rfq/new" element={<NewRfq />} />
           <Route path="/rfq/demo" element={<Navigate to="/rfqs" replace />} />
           <Route path="/rfq/:id" element={<LiveRfq />} />
+          <Route path="/quality" element={<ExecutionQualityDashboard />} />
           <Route path="/trades" element={<Trades />} />
           <Route path="/trades/:id" element={<TradeAnalytics />} />
           <Route path="/dealers" element={<DealerPerformance />} />
@@ -148,6 +151,7 @@ function topbarLabel(active: string) {
     dashboard: 'Institutional Terminal',
     new: 'New RFQ Ticket',
     rfqs: 'RFQ Blotter',
+    quality: 'Execution Quality',
     trades: 'Analytics',
     dealers: 'Dealer Analytics',
     audit: 'Audit Log',
@@ -787,6 +791,140 @@ function DealerPerformance() {
           <p className="badge green">Feed updated 45ms ago</p>
         </section>
       </div>
+    </>
+  );
+}
+
+function ExecutionQualityDashboard() {
+  const quality = useQuery({ queryKey: ['execution-quality'], queryFn: api.executionQuality, refetchInterval: 5000 });
+  const summary = quality.data?.summary ?? {};
+  const slippageSeries = (quality.data?.slippage_over_time ?? []).map((row: AnyRecord) => ({
+    ...row,
+    time: localTime(row.bucket),
+    slippage: Number(row.slippage_bps ?? 0)
+  }));
+  const dealerWins = (quality.data?.dealer_win_rate ?? []).map((row: AnyRecord) => ({
+    ...row,
+    win_rate: Number(row.win_rate ?? 0)
+  }));
+  const dispersion = (quality.data?.quote_dispersion_by_instrument_type ?? []).map((row: AnyRecord) => ({
+    ...row,
+    dispersion: Number(row.avg_quote_dispersion_bps ?? 0)
+  }));
+  const latency = (quality.data?.dealer_latency_distribution ?? []).map((row: AnyRecord) => ({
+    ...row,
+    avg_latency_ms: Number(row.avg_latency_ms ?? 0)
+  }));
+  const missedSavings = quality.data?.missed_savings_leaderboard ?? [];
+  const bestVsExecuted = quality.data?.best_vs_executed_quote_history ?? [];
+
+  if (quality.isLoading) return <Loading />;
+  return (
+    <>
+      <section className="metric-grid">
+        <Metric label="Historical Trades" value={summary.total_trades ?? 0} color="blue" />
+        <Metric label="Avg Slippage" value={bps(summary.avg_slippage_bps)} />
+        <Metric label="Avg Cover Distance" value={bps(summary.avg_cover_distance_bps)} color="green" />
+        <Metric label="Missed Savings" value={money(summary.total_missed_savings_usd)} color="orange" />
+      </section>
+      <div className="grid-12" style={{ flex: 1 }}>
+        <section className="panel" style={{ gridColumn: 'span 7', padding: 18 }}>
+          <div className="panel-header" style={{ padding: 0, border: 0, marginBottom: 10 }}>
+            <span className="label">Slippage Over Time</span>
+            <span className="mono">{slippageSeries.length} TRADES</span>
+          </div>
+          <ResponsiveContainer width="100%" height={230}>
+            <LineChart data={slippageSeries}>
+              <CartesianGrid stroke="#2a323c" />
+              <XAxis dataKey="time" stroke="#667280" />
+              <YAxis stroke="#667280" />
+              <Tooltip contentStyle={{ background: '#11161d', border: '1px solid #2a323c' }} />
+              <Line type="monotone" dataKey="slippage" stroke="#7895b2" strokeWidth={2} dot />
+            </LineChart>
+          </ResponsiveContainer>
+        </section>
+        <section className="panel" style={{ gridColumn: 'span 5', padding: 18 }}>
+          <div className="label">Dealer Win Rate</div>
+          <ResponsiveContainer width="100%" height={240}>
+            <BarChart data={dealerWins}>
+              <CartesianGrid stroke="#2a323c" />
+              <XAxis dataKey="dealer" stroke="#667280" />
+              <YAxis stroke="#667280" />
+              <Tooltip contentStyle={{ background: '#11161d', border: '1px solid #2a323c' }} />
+              <Bar dataKey="win_rate" fill="#6fa782" />
+            </BarChart>
+          </ResponsiveContainer>
+        </section>
+        <section className="panel" style={{ gridColumn: 'span 4', padding: 18 }}>
+          <div className="label">Quote Dispersion By Instrument Type</div>
+          <ResponsiveContainer width="100%" height={210}>
+            <BarChart data={dispersion}>
+              <XAxis dataKey="instrument_type" stroke="#667280" />
+              <YAxis stroke="#667280" />
+              <Tooltip contentStyle={{ background: '#11161d', border: '1px solid #2a323c' }} />
+              <Bar dataKey="dispersion" fill="#7895b2" />
+            </BarChart>
+          </ResponsiveContainer>
+        </section>
+        <section className="panel" style={{ gridColumn: 'span 4', padding: 18 }}>
+          <div className="label">Dealer Latency Distribution</div>
+          <ResponsiveContainer width="100%" height={210}>
+            <BarChart data={latency}>
+              <XAxis dataKey="dealer" stroke="#667280" />
+              <YAxis stroke="#667280" />
+              <Tooltip contentStyle={{ background: '#11161d', border: '1px solid #2a323c' }} />
+              <Bar dataKey="avg_latency_ms" fill="#c49a61" />
+            </BarChart>
+          </ResponsiveContainer>
+        </section>
+        <section className="panel-low" style={{ gridColumn: 'span 4', overflow: 'auto' }}>
+          <div className="panel-header"><span className="label">Missed Savings Leaderboard</span></div>
+          <table className="table">
+            <thead><tr><th>Dealer</th><th className="right">Trades</th><th className="right">Missed</th><th className="right">Avg Slip</th></tr></thead>
+            <tbody>{missedSavings.map((row: AnyRecord) => (
+              <tr key={row.dealer}>
+                <td className="mono">{row.dealer}</td>
+                <td className="right mono">{row.trades}</td>
+                <td className="right mono">{money(row.missed_savings_usd)}</td>
+                <td className="right mono">{bps(row.avg_slippage_bps)}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </section>
+        <section className="panel-low" style={{ gridColumn: 'span 12', overflow: 'auto' }}>
+          <div className="panel-header">
+            <span className="label">Best Vs Executed Quote History</span>
+            <span className="mono">RANK / COVER / EXECUTION PROOF</span>
+          </div>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Trade</th>
+                <th>Time</th>
+                <th>Security</th>
+                <th>Side</th>
+                <th>Executed</th>
+                <th>Best</th>
+                <th>Cover</th>
+                <th className="right">Rank</th>
+              </tr>
+            </thead>
+            <tbody>{bestVsExecuted.map((row: AnyRecord) => (
+              <tr key={row.trade_id}>
+                <td><Link className="mono" style={{ color: 'var(--blue-soft)' }} to={`/trades/${row.trade_id}`}>{shortId(row.trade_id)}</Link></td>
+                <td className="mono">{localTime(row.executed_at)}</td>
+                <td className="mono">{row.bond_code}</td>
+                <td><span className="badge">{row.side}</span></td>
+                <td className="mono">{row.executed_dealer} @ {px(row.execution_price)}</td>
+                <td className="mono">{row.best_dealer ?? '--'} @ {px(row.best_price)}</td>
+                <td className="mono">{row.cover_dealer ?? '--'} @ {px(row.cover_price)}</td>
+                <td className="right mono">#{row.selected_quote_rank ?? '--'}</td>
+              </tr>
+            ))}</tbody>
+          </table>
+        </section>
+      </div>
+      <StatusTape left={`Execution quality refreshed ${bestVsExecuted.length} trades`} />
     </>
   );
 }

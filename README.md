@@ -9,6 +9,18 @@
 </p>
 
 <p align="center">
+  <a href="https://github.com/Taz33m/BondWorks/actions/workflows/ci.yml">
+    <img alt="CI" src="https://github.com/Taz33m/BondWorks/actions/workflows/ci.yml/badge.svg" />
+  </a>
+  <img alt="Java 21" src="https://img.shields.io/badge/Java-21-0f172a?logo=openjdk" />
+  <img alt="React" src="https://img.shields.io/badge/React-TypeScript-2563eb?logo=react" />
+  <img alt="Docker" src="https://img.shields.io/badge/Docker-Compose-0891b2?logo=docker" />
+  <a href="LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/Taz33m/BondWorks" />
+  </a>
+</p>
+
+<p align="center">
   <a href="https://youtu.be/SVm1ZUcQQw4">
     <img alt="Watch demo" src="https://img.shields.io/badge/Watch%20Demo-MP4-2563eb?style=for-the-badge&logo=github" />
   </a>
@@ -22,7 +34,7 @@
 
 <p align="center">
   <a href="https://youtu.be/SVm1ZUcQQw4">
-    <img src="docs/reference/stitch_institutional_rfq_trading_workstation/live_rfq_blotter/screen.png" alt="BondWorks Lite live RFQ blotter" width="100%" />
+    <img src="docs/screenshots/02-live-rfq-blotter.png" alt="BondWorks Lite live RFQ blotter" width="100%" />
   </a>
 </p>
 
@@ -33,6 +45,16 @@ BondWorks Lite is a local-first institutional bond trading simulator. It recreat
 The project is intentionally not a generic admin dashboard. The product is built around one core workflow:
 
 `Dealer Selection -> Quote Competition -> Execution Decision -> Best-Execution Proof -> Audit Trail`
+
+## Visual Tour
+
+The screenshot set in [docs/screenshots](docs/screenshots) is ordered around the recruiter demo path:
+
+1. [New RFQ ticket](docs/screenshots/01-new-rfq-ticket.png): dealer selection intelligence, axes, market tape, and RFQ setup.
+2. [Live RFQ blotter](docs/screenshots/02-live-rfq-blotter.png): progressive dealer liquidity, latency, spread, and execution controls.
+3. [Trade analytics](docs/screenshots/03-trade-analytics.png): quote rank, cover price, slippage, tape VWAP, and audit timeline.
+4. [Audit log](docs/screenshots/04-audit-log.png): compliance-oriented event search and lifecycle traceability.
+5. [Dealer performance](docs/screenshots/05-dealer-performance.png): counterparty win rate, spread, latency, and RFQ response quality.
 
 ## Core Capabilities
 
@@ -188,6 +210,7 @@ print(report.slippage_bps)
 - [Data Model](docs/data-model.md)
 - [Data Strategy](docs/data-strategy.md)
 - [Event Replay](docs/event-replay.md)
+- [Historical Execution Quality Dashboard](docs/execution-quality-dashboard.md)
 - [Demo Script](docs/demo-script.md)
 
 ## Project Status
